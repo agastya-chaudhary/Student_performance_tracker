@@ -1,58 +1,18 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
 <head>
-  <title>Student Performance Tracker</title>
-  <link rel="stylesheet" href="new.css">
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f0f4f8;
-      text-align: center;
-      padding: 50px;
-    }
-
-    h1 {
-      color: #333;
-      margin-bottom: 40px;
-    }
-
-    .menu {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 15px;
-    }
-
-    a {
-      display: inline-block;
-      width: 250px;
-      padding: 12px;
-      text-decoration: none;
-      color: white;
-      background-color: #007bff;
-      border-radius: 8px;
-      font-weight: bold;
-      transition: background-color 0.3s;
-    }
-
-    a:hover {
-      background-color: #0056b3;
-    }
-  </style>
+  <title>Home - Student Management</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='new.css') }}">
 </head>
 <body>
-  <h1>STUDENT PERFORMANCE TRACKER</h1>
-  <h2>Welcome! Choose a page to open:</h2>
-
-  <div class="menu">
-    <a href="login1.html">Login Page</a>
-    <a href="student.html">Student Dashboard</a>
-    <a href="teache.html">Teacher Dashboard</a>
-    <a href="attendencestu.html">Student Attendance</a>
-    <a href="attendenceteacher.html">Teacher Attendance</a>
-    <a href="mrksstu.html">Student Marks & Ranking</a>
-    <a href="marksteacher.html">Teacher Marks & Ranking</a>
-    <a href="feedback.html">Feedback Page</a>
+  <h1 class="main-title">STUDENT PERFORMANCE TRACKER</h1>
+  <div class="container">
+    <h2>Welcome</h2>
+    <nav>
+      <ul>
+        <li><a href="{{ url_for('login') }}" class="btn">Login</a></li>
+      </ul>
+    </nav>
   </div>
 </body>
 </html>
