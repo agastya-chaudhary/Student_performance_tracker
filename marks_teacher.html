@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+<head>
+  <title>Marks & Ranking (Teacher)</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='new.css') }}">
+</head>
+<body>
+<div class="container">
+  <h2>Marks and Ranking</h2>
+  <h3>Teachers: Update Marks</h3>
+
+  <form method="POST" action="{{ url_for('teacher_marks') }}">
+    
+    <label for="student">Student</label>
+    <select name="student_id" required>
+      {% for s in students %}
+        <option value="{{ s.id }}">{{ s.name }} ({{ s.id }})</option>
+      {% endfor %}
+    </select>
+
+    <label for="subject">Subject</label>
+    <select name="subject" required>
+      {% for sub in subjects %}
+        <option value="{{ sub.subject_name }}">{{ sub.subject_name }}</option>
+      {% endfor %}
+    </select>
+
+    <label for="marks">Marks (0-100)</label>
+    <input type="number" id="marks" name="marks" min="0" max="100" required>
+
+    <button type="submit">Update</button>
+  </form>
+
+ <form action="{{ url_for('teacher_dashboard') }}" method="get" style="margin-top: 15px;">
+  <button type="submit" class="btn">← Back to Dashboard</button>
+</form>
+
+</div>
+</body>
+</html>
