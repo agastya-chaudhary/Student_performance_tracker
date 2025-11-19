@@ -1,18 +1,27 @@
+<!doctype html>
 <html>
 <head>
   <title>Teacher Dashboard</title>
-  <link rel="stylesheet" href="new.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='new.css') }}">
 </head>
 <body>
+  <h1 class="main-title">TEACHER PORTAL</h1>
   <div class="container">
-    <h2>Teacher portal,Choose your option</h2>
+    <h2>Teacher: {{ username }}</h2>
     <nav>
       <ul>
-        <li><a href="/attendance">Manage Attendance</a></li>
-        <li><a href="/marks">Manage Marks & Ranking</a></li>
-        <li><a href="/feedback">View Feedback</a></li>
+        <li><a href="{{ url_for('teacher_attendance') }}" class="btn">Manage Attendance</a></li>
+        <li><a href="{{ url_for('teacher_marks') }}" class="btn">Manage Marks & Ranking</a></li>
+        <li><a href="{{ url_for('teacher_feedback') }}" class="btn">Give/View Feedback</a></li>
       </ul>
     </nav>
+
+    <div style="margin-top: 20px;">
+         <form action="{{ url_for('logout') }}" method="get" >
+    <button type="submit" class="btn">← Logout</button>
+  </form>
+     
+    </div>
   </div>
 </body>
 </html>
