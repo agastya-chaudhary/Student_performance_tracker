@@ -1,14 +1,23 @@
-
+<!doctype html>
 <html>
 <head>
   <title>Login</title>
-  <link rel="stylesheet" href="new.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='new.css') }}">
 </head>
 <body>
-    <h1 class="main-title">STUDENT PERFORMANCR TRACKER</h1>
+  <h1 class="main-title">STUDENT PERFORMANCE TRACKER</h1>
   <div class="container">
     <h2>Login</h2>
-    <form action="/login" method="POST">
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <ul>
+          {% for m in messages %}
+            <li style="color: red;">{{ m }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+    <form action="{{ url_for('login') }}" method="POST">
       <label for="username">Username</label>
       <input type="text" id="username" name="username" required>
 
