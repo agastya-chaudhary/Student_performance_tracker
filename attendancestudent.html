@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+<head>
+  <title>Your Attendance</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='new.css') }}">
+</head>
+<body>
+<div class="container">
+  <h2>Your Attendance Record</h2>
+
+  <table>
+    <thead>
+      <tr><th>Date</th><th>Status</th></tr>
+    </thead>
+    <tbody>
+      {% for row in attendance %}
+      <tr>
+        <td>{{ row.date }}</td>
+        <td>{{ row.status }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <br><br>
+
+  <div style="text-align:center;">
+    <a href="{{ url_for('student_dashboard') }}">
+      <button>Back to Dashboard</button>
+    </a>
+  </div>
+
+</div>
+</body>
+</html>
