@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+<head>
+  <title>Teacher Feedback</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='new.css') }}">
+</head>
+<body>
+<div class="container">
+
+  <h2>Give Feedback</h2>
+
+  <form method="POST">
+    <label>Student</label>
+    <select name="student_id" required>
+      {% for s in students %}
+        <option value="{{ s.id }}">{{ s.name }} (ID: {{ s.id }})</option>
+      {% endfor %}
+    </select>
+
+    <label>Feedback</label>
+    <textarea name="feedback_text" rows="4" required></textarea>
+
+    <button type="submit">Submit</button>
+  </form>
+
+  
+ <form action="{{ url_for('teacher_dashboard') }}" method="get" style="margin-top: 15px;">
+    <button type="submit" class="btn">← Back to Dashboard</button>
+  </form>
+
+</div>
+</body>
+</html>
