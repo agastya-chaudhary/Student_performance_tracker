@@ -27,6 +27,11 @@ body {
   box-shadow: 0 8px 20px rgba(22, 21, 21, 0.15);
   
 }
+@keyframes fadeIn {
+  from {opacity: 0; transform: translateY(20px);}
+  to {opacity: 1; transform: translateY(0);}
+}
+
 h2, h3 {
   color: #2c3e50;
   text-align: center;
@@ -80,6 +85,12 @@ input, select, textarea {
   transition: border 0.3s;
 }
 
+input:focus, select:focus, textarea:focus {
+  border-color: #4a90e2;
+  outline: none;
+}
+
+/* Buttons */
 button {
   padding: 12px;
   background: #4a90e2;
@@ -87,7 +98,16 @@ button {
   border: none;
   border-radius: 8px;
   font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
 }
+
+button:hover {
+  background: #357ABD;
+  transform: scale(1.03);
+}
+
+/* Tables */
 table {
   width: 100%;
   border-collapse: collapse;
@@ -109,29 +129,24 @@ th, td {
 tr:nth-child(even) {
   background: #f9f9f9;
 }
+
+/* Feedback list */
 ul {
   list-style: disc inside;
   padding: 0 20px;
   color: #333;
 }
-
-
-.report-card {
-    background: linear-gradient(135deg, #a09237 0%, #ACB6E5 100%);
-    padding: 100px;
-     border-radius: 15px;
-     box-shadow: 0 8px 20px rgba(22, 21, 21, 0.15);
-    width: 400px;
+.logout a:hover {
+      background: #0056b3;
 }
-
-h1 {
-    text-align: center;
-    color: #333;
-}
-
-button:hover {
-    background-color: #3b5bdb;
-}
-.info p {
-    margin: 5px 0;
-}
+    .logout {
+      text-align: center;
+      margin-top: 20px;
+    }
+    .logout a {
+      color: white;
+      background: #007bff;
+      padding: 10px 15px;
+      border-radius: 5px;
+      text-decoration: none;
+    }
