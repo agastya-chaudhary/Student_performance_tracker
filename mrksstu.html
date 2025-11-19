@@ -1,33 +1,30 @@
+<!doctype html>
 <html>
 <head>
-    <title>Student Report Card</title>
-    <link rel="stylesheet" href="new.css">
+  <title>Marks & Ranking</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='new.css') }}">
 </head>
 <body>
-    <div class="reportcard">
-        <h1>Student Report Card</h1>
-        <div class="info">
-            <h3><strong>Name:</strong> {{ name }}</h3>
-            <h3><strong>Student ID:</strong> {{ student_id }}</h3>
-            <h3><strong>Roll no:</strong> {{ roll_no }}</h3>
-            <h3><strong>Class:</strong> {{ class_name }}</h3>
-            <h3><strong>Father's Name:</strong> {{ father_name }}</h3>
-        </div>
+  <div class="container">
+    <h2>Marks and Ranking</h2>
 
-        <table>
-            <tr>
-                <th>Subject</th>
-                <th>Marks</th>
-            </tr>
-            <tr><td>Maths</td><td>{{ maths }}</td></tr>
-            <tr><td>Science</td><td>{{ science }}</td></tr>
-            <tr><td>English</td><td>{{ english }}</td></tr>
-            <tr><td>History</td><td>{{ history }}</td></tr>
-            <tr><td>Computer</td><td>{{ computer }}</td></tr>
-        </table>
+    <table>
+      <thead><tr><th>Subject</th><th>Marks</th></tr></thead>
+      <tbody>
+      {% for row in marks %}
+        <tr><td>{{ row.subject }}</td><td>{{ row.marks }}</td></tr>
+      {% endfor %}
+      </tbody>
+    </table>
 
-        <h3><strong>CGPA:</strong> {{ cgpa }}</h3>
-        <h3><strong>Rank:</strong> {{ rank }}</h3>
-    </div>
+    <p><strong>Total:</strong> {{ total }}</p>
+    <p><strong>Number of subjects:</strong> {{ num_subjects }}</p>
+    <p><strong>Percentage (avg):</strong> {{ percentage }}%</p>
+    <p><strong>CGPA (approx):</strong> {{ cgpa }}</p>
+    <p><strong>Class Rank:</strong> {% if rank %} {{ rank }} {% else %} Not available {% endif %}</p>
+             <form action="{{ url_for('student_dashboard') }}" method="get" >
+    <button type="submit" class="btn">← Dashboard</button>
+  </form>
+  </div>
 </body>
 </html>
