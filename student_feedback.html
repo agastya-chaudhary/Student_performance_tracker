@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+<head>
+  <title>Your Feedback</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='new.css') }}">
+</head>
+<body>
+<div class="container">
+
+  <h2>Your Feedback</h2>
+
+  <table>
+    <thead>
+      <tr><th>Teacher</th><th>Feedback</th><th>Date</th></tr>
+    </thead>
+    <tbody>
+      {% for f in feedbacks %}
+      <tr>
+        <td>{{ f.teacher_name }}</td>
+        <td>{{ f.feedback_text }}</td>
+        <td>{{ f.feedback_date }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+    <form action="{{ url_for('student_dashboard') }}" method="get" >
+    <button type="submit" class="btn">← Dashboard</button>
+  </form>
+</div>
+</body>
+</html>
