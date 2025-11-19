@@ -1,18 +1,32 @@
+<!doctype html>
 <html>
 <head>
   <title>Student Dashboard</title>
-  <link rel="stylesheet" href="new.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='new.css') }}">
 </head>
 <body>
+  <h1 class="main-title">STUDENT PERFORMANCE TRACKER</h1>
   <div class="container">
-    <h2>Student Portal , Choose your Option</h2>
+    <h2>Student Portal</h2>
+    <h1>Welcome, {{ username }}</h1>
+
+    <h3>Your Details</h3>
+    <p><strong>Name:</strong> {{ student_info.name }}</p>
+    <p><strong>Class:</strong> {{ student_info.class }}</p>
+    <p><strong>Roll No:</strong> {{ student_info.rollno }}</p>
+    <p><strong>Age:</strong> {{ student_info.age }}</p>
+
     <nav>
       <ul>
-        <li><a href="/attendance">View Attendance</a></li>
-        <li><a href="/marks">View Marks & Ranking</a></li>
-        <li><a href="/feedback">Submit Feedback</a></li>
+        <li><a href="{{ url_for('student_attendance') }}" class="btn">View Attendance</a></li>
+        <li><a href="{{ url_for('student_marks') }}" class="btn">View Marks & Ranking</a></li>
+        <li><a href="{{ url_for('student_feedback') }}" class="btn">View Feedback</a></li>
       </ul>
     </nav>
+
+    <div class="logout">
+      <a href="{{ url_for('logout') }}">Logout</a>
+    </div>
   </div>
 </body>
 </html>
