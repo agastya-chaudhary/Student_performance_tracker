@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+<head>
+  <title>Teacher Attendance</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='new.css') }}">
+</head>
+<body>
+<div class="container">
+  <h2>Teacher: Update Attendance</h2>
+
+  <form action="{{ url_for('teacher_attendance') }}" method="POST">
+
+    <label>Student</label>
+    <select name="student_id" required>
+      {% for s in students %}
+        <option value="{{ s.id }}">{{ s.name }} ({{ s.id }})</option>
+      {% endfor %}
+    </select>
+
+    <label>Status</label>
+    <select name="status" required>
+      <option value="Present">Present</option>
+      <option value="Absent">Absent</option>
+    </select>
+
+    <label>Date</label>
+    <input type="date" name="date" required>
+
+    <button type="submit">Update Attendance</button>
+  </form>
+
+  <form action="{{ url_for('teacher_dashboard') }}" method="get" style="margin-top: 15px;">
+    <button type="submit" class="btn">← Back to Dashboard</button>
+  </form>
+
+</div>
+</body>
+</html>
